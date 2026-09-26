@@ -704,6 +704,19 @@
       return cleaned.slice(0, 80) || 'file.pdf';
     }
 
+    /* Resolve a stored pdfUrl to a clickable same-origin href (or null). */
+    function pdfHrefFor(issue) {
+      if (!issue || !issue.pdfUrl) return null;
+      const p = String(issue.pdfUrl).trim();
+      if (/^https?:\/\//i.test(p)) return p;          // legacy absolute URLs
+      if (!/\.pdf$/i.test(p)) return null;           // only real PDF paths
+      try {
+        const u = new URL(p.replace(/^\/+/, ''), document.baseURI);
+        if (u.origin !== location.origin) return null; // never leave the site origin
+        return u.href;
+      } catch (e) { return null; }
+    }
+
     /* Validate any data loaded from the network before it touches the DOM */
     window.normalizeEditions = function (list) {
       if (!Array.isArray(list)) return [];
@@ -1003,9 +1016,10 @@
         const safeSubtitle = escapeHtml(featured.subtitle || (featured.articles && featured.articles[0] ? featured.articles[0].excerpt : ''));
         const safeReadTime = escapeHtml(featured.readTime || '3 min read');
         const safeImgUrl = sanitizeUrl(featured.image);
+        const hasPdf = !!pdfHrefFor(featured);
 
         featuredSec.innerHTML = `
-          <div class="bg-paper-100 border border-faps-gold/40 rounded-2xl overflow-hidden shadow-xl hover:border-faps-gold transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-0 relative group">
+          <div onclick="openIssue('${escapeHtml(featured.id)}')" class="bg-paper-100 border border-faps-gold/40 rounded-2xl overflow-hidden shadow-xl hover:border-faps-gold transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-0 relative group cursor-pointer">
             ${window.isAdmin ? `<div class="absolute top-3 left-3 bg-faps-gold text-paper-900 font-bold text-[10px] px-2 py-0.5 rounded shadow z-10 font-mono">FEATURED LEAD CARD</div>` : ''}
             <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
               <div>
@@ -1027,10 +1041,10 @@
               </div>
 
               <div class="mt-6 pt-4 border-t border-paper-300/30 flex items-center justify-between">
-                <button onclick="openIssue('${escapeHtml(featured.id)}')" class="px-4 py-2 bg-faps-gold text-paper-900 font-bold text-xs rounded-lg hover:bg-cream-100 transition-colors flex items-center gap-2">
-                  <span>Read Full Edition</span>
+                <span class="px-4 py-2 bg-faps-gold text-paper-900 font-bold text-xs rounded-lg hover:bg-cream-100 transition-colors flex items-center gap-2">
+                  <span>${hasPdf ? 'Open PDF Edition' : 'Read Full Edition'}</span>
                   <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                </button>
+                </span>
                 <span class="text-xs text-cream-400 font-mono">${safeReadTime}</span>
               </div>
             </div>
@@ -1063,9 +1077,10 @@
           const safeSub = escapeHtml(issue.subtitle || (issue.articles && issue.articles[0] ? issue.articles[0].excerpt : ''));
           const safeRead = escapeHtml(issue.readTime || '2 min read');
           const safeImg = sanitizeUrl(issue.image);
+          const hasPdf = !!pdfHrefFor(issue);
 
           return `
-            <div class="bg-paper-100 border border-paper-300/40 rounded-xl overflow-hidden shadow-lg hover:border-faps-gold/60 transition-all duration-200 flex flex-col justify-between group">
+            <div onclick="openIssue('${escapeHtml(issue.id)}')" class="bg-paper-100 border border-paper-300/40 rounded-xl overflow-hidden shadow-lg hover:border-faps-gold/60 transition-all duration-200 flex flex-col justify-between group cursor-pointer">
               <div>
                 <div class="relative h-44 bg-paper-200 overflow-hidden">
                   <img src="${safeImg}" alt="Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="handleImageError(this)">
@@ -1089,10 +1104,10 @@
               </div>
 
               <div class="px-5 pb-5 pt-3 border-t border-paper-300/20 flex items-center justify-between">
-                <button onclick="openIssue('${escapeHtml(issue.id)}')" class="text-xs font-bold text-faps-gold hover:text-cream-100 flex items-center gap-1 transition-colors">
-                  <span>Read Issue</span>
+                <span class="text-xs font-bold text-faps-gold hover:text-cream-100 flex items-center gap-1 transition-colors">
+                  <span>${hasPdf ? 'Open PDF' : 'Read Issue'}</span>
                   <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                </button>
+                </span>
                 <span class="text-[10px] font-mono text-cream-400">${safeRead}</span>
               </div>
             </div>
@@ -1141,9 +1156,19 @@
       document.querySelectorAll('.reader-article-body').forEach(el => { el.style.fontSize = window.readerFontSize + 'px'; });
     };
 
+    /* Clicking an edition that has a PDF opens the PDF immediately in the
+       browser's built-in viewer (new tab). Articles & polls open the
+       reader exactly as before. */
     window.openIssue = function (id) {
       const issue = (window.newspaperIssues || []).find(i => i.id === id);
       if (!issue) return;
+
+      const href = pdfHrefFor(issue);
+      if (href) {
+        window.open(href, '_blank', 'noopener');
+        return;
+      }
+
       window.activeIssueId = id;
       document.getElementById('view-index').classList.add('hidden');
       document.getElementById('view-reader').classList.remove('hidden');
@@ -1157,13 +1182,9 @@
       const container = document.getElementById('reader-pdf-action-container');
       if (!container) return;
       if (issue.pdfUrl) {
-        const safe = sanitizeUrl(issue.pdfUrl);
         container.innerHTML = `
-          <a href="${safe}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 px-2.5 py-1 bg-paper-100 hover:bg-paper-200 text-cream-100 rounded font-medium border border-paper-300/40 transition-colors">
-            <i data-lucide="file-text" class="w-3.5 h-3.5 text-faps-gold"></i><span>Open PDF</span>
-          </a>
-          <a href="${safe}" download="${escapeHtml(issue.pdfFilename || 'edition.pdf')}" class="flex items-center gap-1 px-2.5 py-1 bg-paper-100 hover:bg-paper-200 text-cream-100 rounded font-medium border border-paper-300/40 transition-colors">
-            <i data-lucide="download" class="w-3.5 h-3.5 text-faps-gold"></i><span>Download</span>
+          <a href="${sanitizeUrl(issue.pdfUrl)}" download="${escapeHtml(issue.pdfFilename || 'edition.pdf')}" class="flex items-center gap-1 px-2.5 py-1 bg-paper-100 hover:bg-paper-200 text-cream-100 rounded font-medium border border-paper-300/40 transition-colors">
+            <i data-lucide="download" class="w-3.5 h-3.5 text-faps-gold"></i><span>Save PDF</span>
           </a>`;
       } else {
         container.innerHTML = '';
