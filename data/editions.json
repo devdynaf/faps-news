@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "id": "ed-mui22plr",
+    "volume": "Issue 1",
+    "title": "September Week 4",
+    "date": "SEPTEMBER 26, 2026",
+    "category": "issues",
+    "categoryLabel": "ISSUE",
+    "status": "published",
+    "readTime": "3 min read",
+    "featured": false,
+    "subtitle": "",
+    "articles": [
+      {
+        "id": "art-ed-mui22plr",
+        "category": "ISSUE",
+        "title": "September Week 4",
+        "author": "By Editorial Staff",
+        "date": "SEPTEMBER 26, 2026",
+        "image": "",
+        "excerpt": "",
+        "content": "<p></p>"
+      }
+    ],
+    "pdfUrl": "pdfs/mui22pm8-The_FAPS_Chronicles_Sep_Week_4.pdf",
+    "pdfFilename": "The_FAPS_Chronicles_Sep_Week_4.pdf",
+    "image": "covers/mui22uvk-cover.jpg"
+  }
+]
