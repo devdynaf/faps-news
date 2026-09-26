@@ -1,5 +1,30 @@
 [
   {
+    "id": "ed-muhymtxq",
+    "volume": "1 2",
+    "title": "Wow",
+    "date": "SEPTEMBER 26, 2026",
+    "category": "academics",
+    "categoryLabel": "ACADEMICS & INNOVATION",
+    "status": "published",
+    "readTime": "3 min read",
+    "featured": false,
+    "subtitle": "",
+    "articles": [
+      {
+        "id": "art-ed-muhymtxq",
+        "category": "ACADEMICS & INNOVATION",
+        "title": "Wow",
+        "author": "By Editorial Staff",
+        "date": "SEPTEMBER 26, 2026",
+        "image": "",
+        "excerpt": "",
+        "content": "<p></p>"
+      }
+    ],
+    "image": "covers/muhymtys-cover.jpg"
+  },
+  {
     "id": "ed-muhydm9r",
     "volume": "Issue 1",
     "title": "TEST",
@@ -12,7 +37,7 @@
     "subtitle": "asdzcSdsdvdvzfdv",
     "articles": [
       {
-        "id": "art-ed-muhydm9r",
+        "id": "art-0",
         "category": "ACADEMICS & INNOVATION",
         "title": "TEST",
         "author": "By Editorial Staff",
@@ -76,7 +101,7 @@
     "pdfFilename": null,
     "articles": [
       {
-        "id": "art-1",
+        "id": "art-0",
         "category": "CAMPUS NEWS",
         "title": "FAPS BENGALURU ANNOUNCES NEW AI & ROBOTICS LAB",
         "author": "By Editorial Staff",
@@ -103,7 +128,7 @@
     "pdfFilename": null,
     "articles": [
       {
-        "id": "art-2",
+        "id": "art-0",
         "category": "COMMEMORATION",
         "title": "COMMEMORATING MR. FRANK ANTHONY: A LEGACY OF COURAGE",
         "author": "By FAPS Historical Society",
@@ -130,7 +155,7 @@
     "pdfFilename": null,
     "articles": [
       {
-        "id": "art-3",
+        "id": "art-0",
         "category": "SPORTS",
         "title": "FAPS SHINES AT INTER-SCHOOL ATHLETICS MEET",
         "author": "By Sports Desk",
