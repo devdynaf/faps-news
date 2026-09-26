@@ -27,33 +27,6 @@
     "image": "covers/muhzwj22-cover.jpg"
   },
   {
-    "id": "vol-59-no-24",
-    "volume": "VOL. LIX NO. 24",
-    "date": "SEPTEMBER 20, 2026",
-    "category": "academics",
-    "categoryLabel": "ACADEMICS & INNOVATION",
-    "title": "FAPS BENGALURU ANNOUNCES NEW AI & ROBOTICS LAB",
-    "subtitle": "The Frank Anthony Public School continues its legacy of academic excellence with state-of-the-art STEM infrastructure for senior students.",
-    "readTime": "4 min read",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80",
-    "featured": true,
-    "status": "published",
-    "pdfUrl": null,
-    "pdfFilename": null,
-    "articles": [
-      {
-        "id": "art-0",
-        "category": "CAMPUS NEWS",
-        "title": "FAPS BENGALURU ANNOUNCES NEW AI & ROBOTICS LAB",
-        "author": "By Editorial Staff",
-        "date": "SEPTEMBER 20, 2026",
-        "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80",
-        "excerpt": "The Frank Anthony Public School, Bengaluru, has inaugurated its state-of-the-art AI & Robotics Innovation Hub, equipping students with future-ready skills in coding, machine learning, and automation.",
-        "content": "<p>In an effort to keep pace with rapid technological advancements, The Frank Anthony Public School, Bengaluru, today inaugurated its brand-new Artificial Intelligence and Robotics Center. The ribbon-cutting ceremony was attended by distinguished alumni, faculty, and student leaders.</p><p>Speaking on the occasion, the Principal emphasized the importance of blending academic rigor with hands-on technological exposure. \"Our motto, 'Courage is Destiny', inspires us to embrace future challenges with confidence and curiosity,\" he noted.</p>"
-      }
-    ]
-  },
-  {
     "id": "vol-59-no-22",
     "volume": "VOL. LIX NO. 22",
     "date": "SEPTEMBER 05, 2026",
