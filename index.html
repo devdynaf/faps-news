@@ -17,8 +17,8 @@
         id: 'vol-59-no-24',
         volume: 'VOL. LIX NO. 24',
         date: 'SEPTEMBER 20, 2026',
-        category: 'academics',
-        categoryLabel: 'ACADEMICS & INNOVATION',
+        category: 'issues',
+        categoryLabel: 'ISSUE',
         title: 'FAPS BENGALURU ANNOUNCES NEW AI & ROBOTICS LAB',
         subtitle: 'The Frank Anthony Public School continues its legacy of academic excellence with state-of-the-art STEM infrastructure for senior students.',
         readTime: '4 min read',
@@ -66,8 +66,8 @@
         id: 'vol-59-no-23',
         volume: 'VOL. LIX NO. 23',
         date: 'SEPTEMBER 12, 2026',
-        category: 'founders',
-        categoryLabel: "FOUNDER'S DAY",
+        category: 'issues',
+        categoryLabel: 'ISSUE',
         title: 'COMMEMORATING MR. FRANK ANTHONY: A LEGACY OF COURAGE',
         subtitle: 'Students and staff gather for the Annual Founder’s Day Assembly celebrating the visionaries who built FAPS across India.',
         readTime: '5 min read',
@@ -93,8 +93,8 @@
         id: 'vol-59-no-22',
         volume: 'VOL. LIX NO. 22',
         date: 'SEPTEMBER 05, 2026',
-        category: 'sports',
-        categoryLabel: 'SPORTS & ARTS',
+        category: 'issues',
+        categoryLabel: 'ISSUE',
         title: 'FAPS SHINES AT INTER-SCHOOL ATHLETICS MEET',
         subtitle: 'FAPS athletes secure top honors across track and field events at the Karnataka ICSE Schools Sports Meet.',
         readTime: '3 min read',
@@ -306,15 +306,6 @@
           <button onclick="filterCategory('all')" data-cat="all" class="cat-btn px-3.5 py-1.5 rounded-full font-semibold bg-cream-200 text-paper-900 border border-faps-gold/40 transition-colors">
             All Issues
           </button>
-          <button onclick="filterCategory('academics')" data-cat="academics" class="cat-btn px-3.5 py-1.5 rounded-full text-cream-300 hover:bg-paper-100 hover:text-cream-100 transition-colors">
-            Academics
-          </button>
-          <button onclick="filterCategory('founders')" data-cat="founders" class="cat-btn px-3.5 py-1.5 rounded-full text-cream-300 hover:bg-paper-100 hover:text-cream-100 transition-colors">
-            Founder's Specials
-          </button>
-          <button onclick="filterCategory('sports')" data-cat="sports" class="cat-btn px-3.5 py-1.5 rounded-full text-cream-300 hover:bg-paper-100 hover:text-cream-100 transition-colors">
-            Sports & Arts
-          </button>
           <button onclick="filterCategory('polls')" data-cat="polls" class="cat-btn px-3.5 py-1.5 rounded-full text-cream-300 hover:bg-paper-100 hover:text-cream-100 transition-colors flex items-center gap-1">
             <i data-lucide="vote" class="w-3.5 h-3.5 text-faps-gold"></i>
             <span>Polls & Surveys</span>
@@ -507,9 +498,7 @@
             <div>
               <label class="block text-[11px] font-semibold text-cream-300 mb-1">Category</label>
               <select id="new-cat" onchange="togglePollFields(this.value)" class="w-full bg-paper-100 border border-paper-300/40 rounded text-xs p-2 text-cream-100">
-                <option value="academics">Academics</option>
-                <option value="founders">Founder's Day</option>
-                <option value="sports">Sports & Arts</option>
+                <option value="issues">Issues</option>
                 <option value="polls">Polls & Surveys</option>
               </select>
             </div>
@@ -581,9 +570,7 @@
 
     const GH = () => window.GH_CONFIG;
     const CATEGORY_LABELS = {
-      academics: 'ACADEMICS & INNOVATION',
-      founders: "FOUNDER'S DAY",
-      sports: 'SPORTS & ARTS',
+      issues: 'ISSUE',
       polls: 'CAMPUS POLL'
     };
 
@@ -726,8 +713,9 @@
         ['volume', 'date', 'categoryLabel', 'title', 'subtitle', 'readTime', 'image', 'pdfUrl', 'pdfFilename', 'question', 'status', 'type'].forEach(k => {
           if (ed[k] != null) ed[k] = String(ed[k]);
         });
-        ed.category = ['academics', 'founders', 'sports', 'polls'].includes(ed.category) ? ed.category : 'academics';
-        if (!ed.categoryLabel) ed.categoryLabel = CATEGORY_LABELS[ed.category];
+        // Only two categories exist now: issues & polls. Anything legacy maps to issues.
+        ed.category = ['issues', 'polls'].includes(ed.category) ? ed.category : 'issues';
+        ed.categoryLabel = ed.category === 'polls' ? 'CAMPUS POLL' : 'ISSUE';
         if (ed.pdfFilename) ed.pdfFilename = sanitizeFilename(ed.pdfFilename);
         if (Array.isArray(ed.options)) {
           ed.options = ed.options.slice(0, 8).map((o, i) => ({
@@ -1370,7 +1358,7 @@
       window.removePdfPending = false;
       document.getElementById('new-vol').value = ed.volume || '';
       document.getElementById('new-title').value = ed.title || '';
-      document.getElementById('new-cat').value = ed.category || 'academics';
+      document.getElementById('new-cat').value = ed.category || 'issues';
       togglePollFields(ed.category);
       document.getElementById('new-status').value = ed.status || 'published';
       document.getElementById('new-image').value = ed.image || '';
@@ -1392,8 +1380,8 @@
         const el = document.getElementById(id);
         if (el) el.value = '';
       });
-      document.getElementById('new-cat').value = 'academics';
-      togglePollFields('academics');
+      document.getElementById('new-cat').value = 'issues';
+      togglePollFields('issues');
       document.getElementById('new-status').value = 'published';
       window.currentUploadedPdf = null;
       window.removePdfPending = false;
