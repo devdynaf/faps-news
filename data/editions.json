@@ -25,32 +25,5 @@
     "pdfUrl": "pdfs/muhzwe75-FAPS_CHRONICLES_wk_4_Sep.pdf",
     "pdfFilename": "FAPS_CHRONICLES_wk_4_Sep.pdf",
     "image": "covers/muhzwj22-cover.jpg"
-  },
-  {
-    "id": "vol-59-no-22",
-    "volume": "VOL. LIX NO. 22",
-    "date": "SEPTEMBER 05, 2026",
-    "category": "sports",
-    "categoryLabel": "SPORTS & ARTS",
-    "title": "FAPS SHINES AT INTER-SCHOOL ATHLETICS MEET",
-    "subtitle": "FAPS athletes secure top honors across track and field events at the Karnataka ICSE Schools Sports Meet.",
-    "readTime": "3 min read",
-    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1000&q=80",
-    "featured": false,
-    "status": "published",
-    "pdfUrl": null,
-    "pdfFilename": null,
-    "articles": [
-      {
-        "id": "art-0",
-        "category": "SPORTS",
-        "title": "FAPS SHINES AT INTER-SCHOOL ATHLETICS MEET",
-        "author": "By Sports Desk",
-        "date": "SEPTEMBER 05, 2026",
-        "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1000&q=80",
-        "excerpt": "Our student athletes demonstrated outstanding endurance and spirit at the state sports tournament, bringing home 12 gold medals.",
-        "content": "<p>The FAPS sports contingent displayed exceptional athleticism at the recently concluded Karnataka ICSE Inter-School Sports Tournament.</p>"
-      }
-    ]
   }
 ]
