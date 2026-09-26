@@ -1,5 +1,39 @@
 [
   {
+    "id": "ed-mui033lp",
+    "volume": "VOL. LIX",
+    "title": "POLL",
+    "date": "SEPTEMBER 26, 2026",
+    "category": "polls",
+    "categoryLabel": "CAMPUS POLL",
+    "status": "published",
+    "readTime": "1 min vote",
+    "featured": false,
+    "subtitle": "",
+    "type": "poll",
+    "question": "Annual Tech Hackathon",
+    "options": [
+      {
+        "id": "opt-1",
+        "text": "Yes",
+        "votes": 0
+      },
+      {
+        "id": "opt-2",
+        "text": "No",
+        "votes": 0
+      },
+      {
+        "id": "opt-3",
+        "text": "Unsure",
+        "votes": 0
+      }
+    ],
+    "totalVotes": 0,
+    "articles": [],
+    "image": ""
+  },
+  {
     "id": "ed-muhzwe6s",
     "volume": "Issue 1",
     "title": "FOUNDERS DAY",
