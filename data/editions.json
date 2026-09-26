@@ -1,5 +1,30 @@
 [
   {
+    "id": "ed-muhyntow",
+    "volume": "Vol 1",
+    "title": "Hello",
+    "date": "SEPTEMBER 26, 2026",
+    "category": "academics",
+    "categoryLabel": "ACADEMICS & INNOVATION",
+    "status": "published",
+    "readTime": "3 min read",
+    "featured": false,
+    "subtitle": "Hi",
+    "articles": [
+      {
+        "id": "art-ed-muhyntow",
+        "category": "ACADEMICS & INNOVATION",
+        "title": "Hello",
+        "author": "By Editorial Staff",
+        "date": "SEPTEMBER 26, 2026",
+        "image": "",
+        "excerpt": "Hi",
+        "content": "<p>Hi</p>"
+      }
+    ],
+    "image": "covers/muhyntoy-cover.jpg"
+  },
+  {
     "id": "ed-muhymtxq",
     "volume": "1 2",
     "title": "Wow",
