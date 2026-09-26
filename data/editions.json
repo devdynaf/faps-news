@@ -1,39 +1,5 @@
 [
   {
-    "id": "poll-1",
-    "volume": "VOL. LIX NO. 25",
-    "date": "SEPTEMBER 24, 2026",
-    "category": "polls",
-    "categoryLabel": "CAMPUS POLL",
-    "type": "poll",
-    "title": "STUDENT COUNCIL POLL: ANNUAL HACKATHON",
-    "subtitle": "Cast your vote in this week’s official opinion poll regarding student extracurriculars.",
-    "readTime": "1 min vote",
-    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80",
-    "featured": false,
-    "status": "published",
-    "question": "Should FAPS introduce an Annual Inter-House AI & Robotics Hackathon?",
-    "options": [
-      {
-        "id": "opt-1",
-        "text": "Yes, definitely! Great for STEM skills",
-        "votes": 142
-      },
-      {
-        "id": "opt-2",
-        "text": "No, keep focus on traditional sports & arts",
-        "votes": 24
-      },
-      {
-        "id": "opt-3",
-        "text": "Undecided / Needs more details",
-        "votes": 12
-      }
-    ],
-    "totalVotes": 178,
-    "articles": []
-  },
-  {
     "id": "vol-59-no-23",
     "volume": "VOL. LIX NO. 23",
     "date": "SEPTEMBER 12, 2026",
